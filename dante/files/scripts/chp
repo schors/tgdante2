@@ -1,0 +1,34 @@
+#!/bin/sh
+
+set -e
+
+ETCVOL=`realpath "../etc"`
+
+DOCKER_CMD="docker run --rm -i -v ${ETCVOL}:/etc ubuntu:xenial"
+
+USER_NAME=${1}
+PASSWORD0=${2}
+
+if [ -z "$USER_NAME" ]; then
+    echo "Usage:"
+    echo "$0 USER [PASSWORD]"
+    exit 1
+fi
+
+if [ -z "$PASSWORD0" ]; then
+    PASSWORD=`apg -M NCL -m 16 -x 16 -n 1`
+else
+    PASSWORD="${PASSWORD}"
+fi
+
+if [ -z "$PASSWORD" ]; then
+    echo "Usage:"
+    echo "$0 USER [PASSWORD]"
+    exit 1
+fi
+
+echo "${USER_NAME}:${PASSWORD}" | ${DOCKER_CMD}  chpasswd -c SHA512
+
+if [ -z "$PASSWORD0" ]; then
+    echo "https://t.me/socks?&user=${USER_NAME}&pass=${PASSWORD}&port=&server="
+fi

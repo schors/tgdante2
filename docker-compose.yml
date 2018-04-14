@@ -1,0 +1,19 @@
+version: '3.0'
+
+services:
+        dante:
+                build:
+                        context: dante
+                        dockerfile: Dockerfile
+                hostname: dante
+                container_name: dante2.local
+                volumes:
+                        - ./etc:/etc
+                ports:
+                        - "1080:1080"
+                network_mode: "host"
+                logging:
+                        driver: syslog
+                        options:
+                                tag: dante2
+                restart: unless-stopped

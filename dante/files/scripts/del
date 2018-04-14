@@ -1,0 +1,17 @@
+#!/bin/sh
+
+set -e
+
+ETCVOL=`realpath "../etc"`
+
+DOCKER_CMD="docker run --rm -i -v ${ETCVOL}:/etc ubuntu:xenial"
+
+USER_NAME=${1}
+
+if [ -z "$USER_NAME" ]; then
+    echo "Usage:"
+    echo "$0 USER"
+    exit 1
+fi
+
+${DOCKER_CMD} userdel "${USER_NAME}"
