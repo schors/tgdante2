@@ -1,5 +1,5 @@
-Dockerized Dante socks5 proxy for telegram. Alpine version
-==========================================================
+Dockerized Dante socks5 proxy for telegram
+==========================================
 
 Features
 --------
@@ -7,12 +7,6 @@ Features
 * User management scripts
 * Only telegram usage restrictions
 * Try to autodetect interface and IPv6 support
-
-Requirements
-------------
-
-* [Docker](https://www.docker.com/docker-community) for virtual containers
-* [Docker Compose](https://docs.docker.com/compose/) - a tool for defining and running multi-container Docker applications
 
 Usage with Docker Hub image
 ---------------------------
@@ -73,4 +67,4 @@ Links
 
 
 ---
-[![UNLICENSE](noc.png)](UNLICENSE)
+[![UNLICENSE](https://github.com/schors/tgdante2/raw/master/noc.png)](https://raw.githubusercontent.com/schors/tgdante2/master/UNLICENSE)
