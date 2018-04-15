@@ -17,7 +17,7 @@ Requirements
 Usage with Docker Hub image
 ---------------------------
 
-```shell
+```console
 # pull docker image
 docker pull schors/tgdante2
 # create directory for permanent username database
@@ -31,6 +31,7 @@ curl -x socks5://user1:secret1@localhost:1080 https://web.telegram.org
 docker run --rm -ti -v `pwd`/etc:/etc --net=host schors/tgdante2 /scripts/chp user1 secret3
 # access test:
 curl -x socks5://user1:secret3@localhost:1080 https://web.telegram.org
+docker run --rm -ti -v `pwd`/etc:/etc --net=host schors/tgdante2 /scripts/list
 docker run --rm -ti -v `pwd`/etc:/etc --net=host schors/tgdante2 /scripts/del user1
 docker exec -ti tgdante /scripts/add user2 secret2
 # access test:
@@ -40,7 +41,7 @@ curl -x socks5://user2:secret2@localhost:1080 https://web.telegram.org
 Very simple usage
 -----------------
 
-```shell
+```console
 docker pull schors/tgdante2
 docker run -d --net=host --restart unless-stopped -e PORT=1080 -e USER=user4 -e PASS=secret4 --name tgdante schors/tgdante2
 curl -x socks5://user4:secret4@localhost:1080 https://web.telegram.org

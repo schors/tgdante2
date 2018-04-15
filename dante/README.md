@@ -11,7 +11,7 @@ Features
 Usage with Docker Hub image
 ---------------------------
 
-```shell
+```console
 # pull docker image
 docker pull schors/tgdante2
 # create directory for permanent username database
@@ -34,7 +34,7 @@ curl -x socks5://user2:secret2@localhost:1080 https://web.telegram.org
 Very simple usage
 -----------------
 
-```shell
+```console
 docker pull schors/tgdante2
 docker run -d --net=host --restart unless-stopped -e PORT=1080 -e USER=user4 -e PASS=secret4 --name tgdante schors/tgdante2
 curl -x socks5://user4:secret4@localhost:1080 https://web.telegram.org
@@ -61,10 +61,9 @@ Links
 
 * [Telegram](https://telegram.org/)  Messenger
 * [Dante](https://www.inet.no/dante/index.html) A free SOCKS server
-
-* [Restless Phil](https://2018.schors.spb.ru) Restless Phil :tm:
+* [Restless Phil](https://2018.schors.spb.ru) Restless Phil (tm)
 * [Roscomnadzor](http://rkn.gov.ru) The Federal Service for Supervision of Communications, Information Technology, and Mass Media
-
 
 ---
 [![UNLICENSE](https://github.com/schors/tgdante2/raw/master/noc.png)](https://raw.githubusercontent.com/schors/tgdante2/master/UNLICENSE)
+

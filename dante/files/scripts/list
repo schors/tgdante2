@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -e
+
+getent passwd | grep -v '^root\:' | grep -v '^nobody\:' | grep -o '^[^\:]*'
+
