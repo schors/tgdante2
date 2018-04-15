@@ -32,6 +32,5 @@ fi
 adduser -D -H -S "${USER_NAME}"
 echo "${USER_NAME}:${PASSWORD}" | chpasswd -c SHA256
 
-if [ x"${PASSWORD0}" = "x" ]; then
-    echo "https://t.me/socks?&user=${USER_NAME}&pass=${PASSWORD}&port=${PORT}&server="
-fi
+echo "tg://socks?&user=${USER_NAME}&pass=${PASSWORD}&port=${PORT}&server="
+

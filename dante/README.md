@@ -1,12 +1,16 @@
-Dockerized Dante socks5 proxy for telegram
-==========================================
-
 Features
 --------
-* Docker, Docker Compose
 * User management scripts
 * Only telegram usage restrictions
 * Try to autodetect interface and IPv6 support
+
+Very simple usage
+-----------------
+
+```console
+docker pull schors/tgdante2
+docker run -d --net=host --restart unless-stopped -e PORT=1080 -e USER=user0 -e PASS=secret0 --name tgdante schors/tgdante2
+```
 
 Usage with Docker Hub image
 ---------------------------
@@ -17,27 +21,23 @@ docker pull schors/tgdante2
 # create directory for permanent username database
 mkdir etc
 # start container
-docker run -d -v `pwd`/etc:/etc --net=host --restart unless-stopped --name tgdante schors/tgdante2
+docker run -d -v $PWD/etc:/etc --net=host --restart unless-stopped --name tgdante schors/tgdante2
 # manage users
-docker run --rm -ti -v `pwd`/etc:/etc --net=host schors/tgdante2 /scripts/add user1 secret1
-# access test:
-curl -x socks5://user1:secret1@localhost:1080 https://web.telegram.org
-docker run --rm -ti -v `pwd`/etc:/etc --net=host schors/tgdante2 /scripts/chp user1 secret3
-# access test:
-curl -x socks5://user1:secret3@localhost:1080 https://web.telegram.org
-docker run --rm -ti -v `pwd`/etc:/etc --net=host schors/tgdante2 /scripts/del user1
-docker exec -ti tgdante /scripts/add user2 secret2
-# access test:
-curl -x socks5://user2:secret2@localhost:1080 https://web.telegram.org
+docker run --rm -ti -v $PWD/etc:/etc --net=host schors/tgdante2 /scripts/add user1 secret1
+docker run --rm -ti -v $PWD/etc:/etc --net=host schors/tgdante2 /scripts/chp user1 secret2
+docker run --rm -ti -v $PWD/etc:/etc --net=host schors/tgdante2 /scripts/list
+docker run --rm -ti -v $PWD/etc:/etc --net=host schors/tgdante2 /scripts/del user1
+# another method (via docker exec)
+docker exec -ti tgdante /scripts/add user2 secret3
 ```
 
-Very simple usage
------------------
+Please note that `-v $PWD/etc` is necessary for persistent user database
+
+Access test
+-----------
 
 ```console
-docker pull schors/tgdante2
-docker run -d --net=host --restart unless-stopped -e PORT=1080 -e USER=user4 -e PASS=secret4 --name tgdante schors/tgdante2
-curl -x socks5://user4:secret4@localhost:1080 https://web.telegram.org
+curl -x socks5://user2:secret2@localhost:1080 https://web.telegram.org
 ```
 
 Environment variables
@@ -64,6 +64,6 @@ Links
 * [Restless Phil](https://2018.schors.spb.ru) Restless Phil (tm)
 * [Roscomnadzor](http://rkn.gov.ru) The Federal Service for Supervision of Communications, Information Technology, and Mass Media
 
+
 ---
 [![UNLICENSE](https://github.com/schors/tgdante2/raw/master/noc.png)](https://raw.githubusercontent.com/schors/tgdante2/master/UNLICENSE)
-
