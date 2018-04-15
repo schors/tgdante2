@@ -1,3 +1,14 @@
 *\~
 *.swp
-etc/
+etc/.pwd.lock
+etc/resolv.conf
+etc/hosts
+etc/hostname
+etc/group-
+etc/group
+etc/passwd-
+etc/passwd
+etc/shadow-
+etc/shadow
+etc/login.defs
+

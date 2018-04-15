@@ -1,32 +1,24 @@
-Dockerized Dante socks5 proxy for telegram
-==========================================
-
-[РУССКАЯ Версия](README-RUS.md)
+Dockerized Dante socks5 proxy for telegram. Alpine version
+==========================================================
 
 Features
 --------
 * Docker, Docker Compose
-* Add/Del/Chpass user scripts
+* User management scripts
 * Only telegram usage restrictions
+* Try to autodetect interface and IPv6 support
 
 Requirements
 ------------
 
 * [Docker](https://www.docker.com/docker-community) for virtual containers
 * [Docker Compose](https://docs.docker.com/compose/) - a tool for defining and running multi-container Docker applications
-* [apg](http://www.adel.nursat.kz/apg/) - a package for generates several random passwords
 
 Usage
 -----
 
 * Clone repository
-* Edit dante/sockd.conf:
-  * external: The address to be used for outgoing connections. The address given may be either a IP address or an interface name.
-  * Uncoment some lines for IPv6 support
-* Edit dante/Dockerfile:
-  * Edit `ENV WORKERS 50` for preforked workers
 * Run `docker-compose up -d`
-* Use scripts in `scripts` folder for adding and removing users, changing passwords
 
 For nuts
 --------

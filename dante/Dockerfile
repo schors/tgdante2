@@ -8,7 +8,6 @@ ENV DANTE_SHA baa25750633a7f9f37467ee43afdf7a95c80274394eddd7dcd4e1542aa75caad
 ENV DANTE_FILE dante.tar.gz
 ENV DANTE_TEMP dante
 ENV DANTE_DEPS linux-pam-dev curl gcc g++ make
-ENV CFGFILE "/etc/sockd.conf"
 ENV WORKERS "10"
 
 RUN set -x \
@@ -35,7 +34,6 @@ RUN set -x \
     --without-krb5 \
     --without-upnp \
   && make && make install \
-
   # Clean up
   && cd .. \
   && rm -rf $DANTE_TEMP \
@@ -43,9 +41,9 @@ RUN set -x \
   && rm -rf /var/cache/apk/* /tmp/*
 
 ADD files /
-RUN ls -la /
 ADD entrypoint.sh /entrypoint.sh
 
-EXPOSE 1080
+EXPOSE ${PORT}
 
-CMD /entrypoint.sh sockd -f ${CFGFILE} -N ${WORKERS}
+CMD /entrypoint.sh sockd
+
