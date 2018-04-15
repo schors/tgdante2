@@ -1,6 +1,7 @@
 FROM alpine:3.6
 
 LABEL maintainer="<schors@gmail.com>"
+LABEL version="0.1.1"
 
 ENV DANTE_VER 1.4.2
 ENV DANTE_URL https://www.inet.no/dante/files/dante-$DANTE_VER.tar.gz
