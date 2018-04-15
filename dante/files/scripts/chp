@@ -12,19 +12,19 @@ else
         PORT="1080"
 fi
 
-if [ -z "$USER_NAME" ]; then
+if [ x"${USER_NAME}" = "x" ]; then
     echo "Usage:"
     echo "$0 USER [PASSWORD]"
     exit 1
 fi
 
-if [ -z "${PASSWORD0}" ]; then
+if [ x"${PASSWORD0}" = "x" ]; then
     PASSWORD=`apg -M NCL -m 16 -x 16 -n 1`
 else
-    PASSWORD="${PASSWORD}"
+    PASSWORD="${PASSWORD0}"
 fi
 
-if [ -z "${PASSWORD}" ]; then
+if [ x"${PASSWORD}" = "x" ]; then
     echo "Usage:"
     echo "$0 USER [PASSWORD]"
     exit 1
@@ -32,7 +32,7 @@ fi
 
 echo "${USER_NAME}:${PASSWORD}" | chpasswd -c SHA512
 
-if [ -z "$PASSWORD0" ]; then
+if [ x"$PASSWORD0" = "x" ]; then
     echo "https://t.me/socks?&user=${USER_NAME}&pass=${PASSWORD}&port=${PORT}&server="
 fi
 

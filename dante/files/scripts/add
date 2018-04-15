@@ -11,7 +11,7 @@ else
         PORT="1080"
 fi
 
-if [ -z "$USER_NAME" ]; then
+if [ x"$USER_NAME" = "x" ]; then
     echo "Usage:"
     echo "$0 USER [PASSWORD]"
     exit 1

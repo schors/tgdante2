@@ -4,7 +4,7 @@ set -e
 
 USER_NAME=${1}
 
-if [ -z "${USER_NAME}" ]; then
+if [ x"${USER_NAME}" = "x" ]; then
     echo "Usage:"
     echo "$0 USER"
     exit 1

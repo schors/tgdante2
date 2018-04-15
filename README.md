@@ -20,10 +20,10 @@ Usage with Docker Hub image
 ```shell
 docker pull schors/tgdante2
 mkdir etc
-docker run -d -v ./etc:/etc --net=host --name tgdante schors/tgdante2
-docker run --rm -ti -v ./etc:/etc --net=host schors/tgdante2 /scripts/add user1 secret1
-docker run --rm -ti -v ./etc:/etc --net=host schors/tgdante2 /scripts/chp user1 secret3
-docker run --rm -ti -v ./etc:/etc --net=host schors/tgdante2 /scripts/del user1
+docker run -d -v `pwd`/etc:/etc --net=host --name tgdante schors/tgdante2
+docker run --rm -ti -v `pwd`/etc:/etc --net=host schors/tgdante2 /scripts/add user1 secret1
+docker run --rm -ti -v `pwd`/etc:/etc --net=host schors/tgdante2 /scripts/chp user1 secret3
+docker run --rm -ti -v `pwd`/etc:/etc --net=host schors/tgdante2 /scripts/del user1
 docker exec -ti tgdante /scripts/add user2 secret2
 ```
 
