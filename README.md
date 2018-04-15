@@ -14,11 +14,35 @@ Requirements
 * [Docker](https://www.docker.com/docker-community) for virtual containers
 * [Docker Compose](https://docs.docker.com/compose/) - a tool for defining and running multi-container Docker applications
 
-Usage
------
+Usage with Docker Hub image
+---------------------------
 
-* Clone repository
-* Run `docker-compose up -d`
+```shell
+docker pull schors/tgdante2
+mkdir etc
+docker run -d -v ./etc:/etc --net=host --name tgdante schors/tgdante2
+docker run --rm -ti -v ./etc:/etc --net=host schors/tgdante2 /scripts/add user1 secret1
+docker run --rm -ti -v ./etc:/etc --net=host schors/tgdante2 /scripts/chp user1 secret3
+docker run --rm -ti -v ./etc:/etc --net=host schors/tgdante2 /scripts/del user1
+docker exec -ti tgdante /scripts/add user2 secret2
+```
+
+Very simple usage
+-----------------
+
+```shell
+docker pull schors/tgdante2
+docker run -d --net=host -e PORT=1080 -e USER=user1 -e PASS=secret1 --name tgdante schors/tgdante2
+```
+
+Environment variables
+---------------------
+
+* USER,PASS - create USER with PASSword
+* PORT - listen on PORT. Default: 1080
+* INTERFACE - outgoing interface name or IP. Default: autodetect
+* WORKERS - preforked workers. Default: 10
+* IP6 - something, if needed. Default: autodetect
 
 For nuts
 --------

@@ -30,14 +30,15 @@ fi
 if [  x"${PORT}" != "x" ]; then
         # internal: 0.0.0.0 port = 1080
         sed -i 's/\(internal\:.*port[ ]*=[ ]*\)[^ ]*\(.*\)$/\1'"${PORT}"'\2/' "${CFGFILE}"
+        echo "${PORT}" > /tmp/dante_port
 fi
 
-if [ x"${USER}" != "x" -a x"${PASSWD}" != "x" ]; then
-        echo "${USER} ${PASSWD}"
+if [ x"${USER}" != "x" -a x"${PASS}" != "x" ]; then
+        echo "${USER} ${PASS}"
         if ! getent passwd "${USER}"; then
                 adduser -D -H -S "${USER}"
         fi
-        echo "${USER}:${PASSWD}" | chpasswd -c SHA256
+        echo "${USER}:${PASS}" | chpasswd -c SHA256
 fi
 
 exec "sockd" "-f" "${CFGFILE}" "-N" "${WORKERS}"
