@@ -1,0 +1,2 @@
+auth required pam_pwdfile.so pwdfile /etc/sockd.passwd
+account required pam_permit.so
